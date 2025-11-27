@@ -25,9 +25,9 @@ class BotConfig:
     wait_time: int
     recheck_interval: int
     max_iterations: int
-    edge_driver_path: str = None
-    headless: bool = False
-    webdriver_timeout: int = 10
+    edge_driver_path: str
+    headless: bool
+    webdriver_timeout: int
 
 
 def load_config() -> BotConfig:

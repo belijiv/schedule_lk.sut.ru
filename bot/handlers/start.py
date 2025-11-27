@@ -9,6 +9,7 @@ from bot.shared_data import attendance_service  # Используем общи�
 router = Router()
 
 @router.message(CommandStart())
+@router.message(F.text == "▶️ Старт")
 async def cmd_start(message: Message, state: FSMContext):
     await state.clear()
 

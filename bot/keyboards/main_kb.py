@@ -4,6 +4,7 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder
 def get_main_keyboard():
     return ReplyKeyboardMarkup(
         keyboard=[
+            [KeyboardButton(text="▶️ Старт")],
             [KeyboardButton(text="📊 Статус"), KeyboardButton(text="🔍 Проверить пары")],
             [KeyboardButton(text="⏸️ Остановить"), KeyboardButton(text="🔄 Перезапустить")]
         ],
