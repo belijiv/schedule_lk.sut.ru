@@ -5,12 +5,9 @@ For the bot to work properly, you need to install WebDriver for your browser.
 
 ### Step 1: Install WebDriver
 
-| Browser | Driver | Download Link | Notes |
-|---------|--------|---------------|--------|
-| **Chrome** | ChromeDriver | [https://chromedriver.chromium.org/](https://chromedriver.chromium.org/) | Make sure the version matches your browser |
-| **Firefox** | GeckoDriver | [https://github.com/mozilla/geckodriver/releases](https://github.com/mozilla/geckodriver/releases) | - |
-| **Edge** | EdgeDriver | [https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/) | - |
-| **Safari** | SafariDriver | Built into macOS | Run: `sudo safaridriver --enable` in terminal |
+| Browser | Driver | Download Link |
+|---------|--------|---------------|
+| **Edge** | EdgeDriver | [https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/) |
 
 ### Installation Guide
 1. **Download** the appropriate driver for your browser
@@ -29,12 +26,9 @@ pip install -r requirements.txt
 
 ### Шаг 1: Установка WebDriver
 
-| Браузер | Драйвер | Ссылка для скачивания | Примечания |
-|---------|---------|--------------|---------|
-| **Chrome** | ChromeDriver | [https://chromedriver.chromium.org/](https://chromedriver.chromium.org/) | Убедитесь, что версия соответствует вашему браузеру |
-| **Firefox** | GeckoDriver | [https://github.com/mozilla/geckodriver/releases](https://github.com/mozilla/geckodriver/releases) | - |
-| **Edge** | EdgeDriver | [https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/) | - |
-| **Safari** | SafariDriver | Встроен в macOS | Выполните команду `sudo safaridriver --enable` в терминале |
+| Браузер | Драйвер | Ссылка для скачивания |
+|---------|---------|--------------|
+| **Edge** | EdgeDriver | [https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/) |
 
 ### Руководство по установке
 1. **Скачайте** подходящий драйвер для вашего браузера
