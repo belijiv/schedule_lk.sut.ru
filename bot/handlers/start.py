@@ -16,6 +16,16 @@ async def cmd_start(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_name = message.from_user.full_name
 
+    # ПРОВЕРЯЕМ, не запущен ли уже сервис
+    if attendance_service.is_running and attendance_service.driver:
+        await message.answer(
+            "✅ <b>Бот уже запущен!</b>\n\n"
+            "Используйте другие кнопки для управления.",
+            reply_markup=get_main_keyboard(),
+            parse_mode="HTML"
+        )
+        return
+
     success = await attendance_service.start()
 
     if success:

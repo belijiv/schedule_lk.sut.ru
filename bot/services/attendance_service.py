@@ -22,8 +22,13 @@ class AttendanceService:
         self.scheduler_task = None
 
     async def start(self):
-        """Запуск сервиса - ДОБАВЛЕННЫЙ МЕТОД"""
+        """Запуск сервиса с защитой от повторного запуска"""
         try:
+            # ПРОВЕРКА: если уже запущен, не создаем новый браузер
+            if self.is_running and self.driver:
+                logger.info("Сервис уже запущен, повторный запуск не требуется")
+                return True
+
             logger.info("Запуск сервиса отметки...")
 
             if not await self._init_browser():

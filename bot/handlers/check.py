@@ -29,7 +29,7 @@ async def cmd_check(message: Message, state: FSMContext):
         attendance_service.driver.refresh()
         await asyncio.sleep(5)
 
-        # Проверяем внутривузовские пары
+        # Сначала проверяем внутривузовские пары
         intra_lesson = await attendance_service.find_current_lesson(False)
         if intra_lesson:
             response = (
@@ -50,10 +50,9 @@ async def cmd_check(message: Message, state: FSMContext):
                 response += "\n❌ <b>Кнопка 'Начать занятие' не доступна</b>"
 
             await message.answer(response, parse_mode="HTML")
-        else:
-            await message.answer("❌ <b>Внутривузовская пара не найдена</b>", parse_mode="HTML")
+            return  # Выходим после нахождения внутривузовской пары
 
-        # Проверяем вневузовские пары
+        # Если внутривузовских пар нет, проверяем вневузовские
         extra_lesson = await attendance_service.find_current_lesson(True)
         if extra_lesson:
             response = (
@@ -74,12 +73,12 @@ async def cmd_check(message: Message, state: FSMContext):
                 response += "\n❌ <b>Кнопка 'Начать занятие' не доступна</b>"
 
             await message.answer(response, parse_mode="HTML")
-        else:
-            await message.answer("❌ <b>Вневузовская пара не найдена</b>", parse_mode="HTML")
+            return  # Выходим после нахождения вневузовской пары
+
+        # Если не найдено ни одной пары
+        await message.answer("❌ <b>Пары не найдены</b>", parse_mode="HTML")
 
     except Exception as e:
         error_message = f"❌ <b>Ошибка при проверке пар:</b>\n{str(e)}"
         await message.answer(error_message, parse_mode="HTML")
-
-        # Логируем ошибку для отладки
         print(f"Ошибка в cmd_check: {e}")
