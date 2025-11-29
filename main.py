@@ -12,7 +12,8 @@ from bot.handlers.start import router as start_router
 from bot.handlers.status import router as status_router
 from bot.handlers.check import router as check_router
 from bot.handlers.control import router as control_router
-from bot.shared_data import attendance_service  # Импортируем общий экземпляр
+from bot.handlers.help import router as help_router
+from bot.shared_data import attendance_service
 
 logging.basicConfig(
     level=logging.INFO,
@@ -20,9 +21,8 @@ logging.basicConfig(
     stream=sys.stdout
 )
 
-
 async def main():
-    config = attendance_service.config  # Используем конфиг из общего экземпляра
+    config = attendance_service.config
 
     bot = Bot(
         token=config.telegram_token,
@@ -41,6 +41,7 @@ async def main():
     dp.include_router(status_router)
     dp.include_router(check_router)
     dp.include_router(control_router)
+    dp.include_router(help_router)
 
     try:
         logging.info(f"Бот запущен. Разрешенные пользователи: {config.allowed_user_ids}")
@@ -50,7 +51,6 @@ async def main():
     finally:
         await attendance_service.stop()
         await bot.session.close()
-
 
 if __name__ == "__main__":
     asyncio.run(main())
